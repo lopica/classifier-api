@@ -51,24 +51,6 @@ async function loadLocalModel() {
     }
 }
 
-// async function loadRasnetV2Model() {
-//     try {
-//         model = await tf.loadGraphModel("https://www.kaggle.com/models/google/resnet-v2/TfJs/101-classification/2", { fromTFHub: true })
-//         console.log("Rasnet v2 loaded successfully!");
-
-//         tf.tidy(function () {
-//             let answer = model.predict(tf.zeros([1, MOBILE_NET_INPUT_HEIGHT, MOBILE_NET_INPUT_WIDTH, 3]));
-//             console.log(answer.shape);
-//         });
-//     } catch (error) {
-//         console.error("Failed to load Rasnet V2 model:", error);
-//     }
-// }
-
-// async function loadEfficientNetModel () {
-
-// }
-
 //upload data
 function upload() {
     //convert base64 to image
@@ -221,7 +203,7 @@ await loadLocalModel();
 //add custom layer
 customModel = tf.sequential();
 customModel.add(
-    tf.layers.dense({ inputShape: [1001], units: 143, activation: "relu" })
+    tf.layers.dense({ inputShape: [1280], units: 128, activation: "relu" })
 );
 customModel.add(
     tf.layers.dense({ units: classNames.length, activation: "softmax" })
