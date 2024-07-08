@@ -241,6 +241,13 @@ customModel.summary()
 //         next(error);
 //     }
 // });
+app.get("/api/test", async (req, res, next) => {
+    try {
+        res.status(200).json("test successful");
+    } catch (error) {
+        next(error);
+    }
+});
 
 app.post("/api/train", async (req, res, next) => {
     try {
